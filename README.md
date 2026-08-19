@@ -34,7 +34,7 @@ pip install pynput
 Run the app:
 
 ```bash
-python main.py
+python Marionette.py
 ```
 
 1. Click **Start Recording** (or press the record hotkey, default `<f9>`)
