@@ -6,7 +6,6 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from pathlib import Path
 
-# screen pixels.
 if sys.platform == "win32":
     import ctypes
     try:
@@ -36,7 +35,7 @@ class MacroRecorder:
         self.keyboard_ctrl = KeyboardController()
         self._last_move_time = 0
         self._move_interval = 0.05
-        self._drag_move_interval = 0.008  # tighter sampling while a button is held, for smooth strokes
+        self._drag_move_interval = 0.008  
         self._buttons_held = set()
 
     def start_recording(self):
@@ -474,8 +473,6 @@ class MacroApp:
         self.mini_play_win.update_idletasks()
         w = self.mini_play_win.winfo_reqwidth() + 12
         h = self.mini_play_win.winfo_reqheight() + 10
-
-        # Fixed top-left placement, same spot every time.
         self.mini_play_win.geometry(f"{w}x{h}+0+0")
         self._force_topmost(self.mini_play_win)
         self._keep_topmost(self.mini_play_win)
@@ -667,7 +664,6 @@ class MacroApp:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    # cx_Freeze places included files beside the frozen executable.
     app_dir = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else Path(__file__).resolve().parent
     icon_ico_path = app_dir / "icon.ico"
 
