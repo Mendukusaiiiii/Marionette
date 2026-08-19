@@ -327,12 +327,6 @@ class MacroApp:
             pass
 
     def _force_topmost(self, win):
-        """Push a window above every other window, including other apps'
-        always-on-top windows (fullscreen games, other utilities, etc).
-        tkinter's own -topmost attribute only competes within its own
-        toolkit's notion of layering, so on Windows we also go straight to
-        the Win32 z-order API, which wins against other topmost windows
-        because it's reasserted continuously."""
         try:
             win.attributes("-topmost", True)
         except tk.TclError:
@@ -358,8 +352,6 @@ class MacroApp:
                 pass
 
     def _keep_topmost(self, win):
-        """Reassert the topmost layer on a short timer for as long as the
-        window is alive, so it stays above windows other apps raise later."""
         if win is None:
             return
         try:
